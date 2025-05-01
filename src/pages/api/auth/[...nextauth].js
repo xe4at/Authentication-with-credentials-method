@@ -3,7 +3,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import connectDB from "../../../../utils/connectDb";
 import User from "../../../../models/User";
 import { verifyPassword } from "../../../../utils/auth";
-import { renderToHTML } from "next/dist/server/render";
 
 const authOptions = {
   session: { strategy: "jwt" },
