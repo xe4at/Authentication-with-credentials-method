@@ -1,12 +1,18 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { signIn } from "next-auth/react";
+import React, { useEffect, useState } from "react";
+import { signIn, useSession } from "next-auth/react";
 
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { data, status } = useSession();
+
   const router = useRouter();
+
+  useEffect(() => {
+    if (status === "authenticated") router.replace("/dashboard");
+  }, [status]);
 
   const loginHandler = async () => {
     const res = await signIn("credentials", {
