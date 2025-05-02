@@ -1,6 +1,10 @@
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 export default function Home() {
+  const logOutHandler = async () => {
+    signOut();
+  };
   return (
     <>
       <div>
@@ -14,6 +18,7 @@ export default function Home() {
         <button>
           <Link href="/signin">Login</Link>
         </button>
+        <button onClick={logOutHandler}>Logout</button>
       </div>
     </>
   );
